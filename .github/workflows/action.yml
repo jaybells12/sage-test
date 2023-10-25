@@ -42,7 +42,7 @@ jobs:
 
   php-build:
     runs-on: ubuntu-latest
-    container: jaybells12/composer-82:alpine
+    container: MilesChou/composer-action/install@master
     steps:
       - name: Check out the git repo
         uses: actions/checkout@v4
