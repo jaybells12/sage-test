@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the git repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -45,7 +45,7 @@ jobs:
     container: gjrdiesel/composer-80:alpine
     steps:
       - name: Check out the git repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run composer install in theme directory
         run: cd wp-content/themes/${{ env.THEME_NAME }} && composer install && cd -
