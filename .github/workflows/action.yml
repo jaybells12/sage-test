@@ -42,7 +42,7 @@ jobs:
 
   php-build:
     runs-on: ubuntu-latest
-    container: gjrdiesel/composer-80:alpine
+    container: jaybells12/composer-82:alpine
     steps:
       - name: Check out the git repo
         uses: actions/checkout@v4
