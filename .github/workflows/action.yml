@@ -37,9 +37,17 @@ jobs:
       - name: Deploy to WPE
         uses: wpengine/github-action-wpe-site-deploy@v3
         with:
-          SCRIPT: post-deploy.sh
-          WPE_SSHG_KEY_PRIVATE: ${{ env.WPE_SSHG_KEY_PRIVATE}}
+          # Deploy vars 
+          WPE_SSHG_KEY_PRIVATE: ${{ env.WPE_SSHG_KEY_PRIVATE }} 
           WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
+          # Deploy Options
+          SRC_PATH: "wp-content/themes/genesis-child-theme/"
+          REMOTE_PATH: "wp-content/themes/genesis-child-theme/"
+          PHP_LINT: TRUE
+          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude-from=.deployignore
+          SCRIPT: "post-deploy.sh"
+          CACHE_CLEAR: TRUE 
+          
 
   php-build:
     runs-on: ubuntu-latest
@@ -58,34 +66,13 @@ jobs:
       - name: Deploy to wpengine.com
         uses: wpengine/github-action-wpe-site-deploy@v3
         with:
-          SCRIPT: post-deploy.sh
-          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE}}
+          # Deploy vars 
+          WPE_SSHG_KEY_PRIVATE: ${{ env.WPE_SSHG_KEY_PRIVATE }} 
           WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
-    # steps:
-    # - uses: actions/checkout@v4
-
-    # - name: GitHub Action Deploy to WP Engine
-    #   uses: wpengine/github-action-wpe-site-deploy@v3
-    #   with:
-    #     # Deploy vars
-    #     WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
-    #     WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
-    #     # Deploy Options
-    #     REMOTE_PATH: "wp-content/"
-    #     FLAGS: -azvr --inplace --delete --include-from config/include.txt --exclude=".*" --exclude-from config/exclude.txt
-    #     PHP_LINT: TRUE
-    #     SCRIPT: wp-content/config/post-deploy.sh
-    # runs-on: ubuntu-latest
-    # container: gjrdiesel/composer-80:alpine
-    # steps:
-    #   - name: Check out the git repo
-    #     uses: actions/checkout@v4
-
-    #   - name: Run composer install in theme directory
-    #     run: cd wp-content/themes/${{ env.THEME_NAME }} && composer install && cd -
-
-    #   - name: Deploy to wpengine.com
-    #     uses: wpengine/github-action-wpe-site-deploy@v3
-    #     with:
-    #       SCRIPT: post-deploy.sh
-    #       WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
+          # Deploy Options
+          SRC_PATH: "wp-content/themes/genesis-child-theme/"
+          REMOTE_PATH: "wp-content/themes/genesis-child-theme/"
+          PHP_LINT: TRUE
+          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude-from=.deployignore
+          SCRIPT: "post-deploy.sh"
+          CACHE_CLEAR: TRUE
