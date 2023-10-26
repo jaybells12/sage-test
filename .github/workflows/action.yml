@@ -38,27 +38,28 @@ jobs:
         uses: wpengine/github-action-wpe-site-deploy@v3
         with:
           SCRIPT: post-deploy.sh
+          WPE_SSHG_KEY_PRIVATE: ${{ env.WPE_SSHG_KEY_PRIVATE}}
           WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
 
   php-build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
+      # - name: Setup PHP
+      #   uses: shivammathur/setup-php@v2
+      #   with:
+      #     php-version: 8.2
       
-      - name: Check out the git repo
-        uses: actions/checkout@v4
+      # - name: Check out the git repo
+      #   uses: actions/checkout@v4
 
-      - name: Run composer install in theme directory
-        run: cd wp-content/themes/${{ env.THEME_NAME }} && composer install && cd -
+      # - name: Run composer install in theme directory
+      #   run: cd wp-content/themes/${{ env.THEME_NAME }} && composer install && cd -
 
       - name: Deploy to wpengine.com
         uses: wpengine/github-action-wpe-site-deploy@v3
         with:
           SCRIPT: post-deploy.sh
-          WPE_SSHG_KEY_PRIVATE: ${{ env.WPE_SSHG_KEY_PRIVATE}}
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE}}
           WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
     # steps:
     # - uses: actions/checkout@v4
