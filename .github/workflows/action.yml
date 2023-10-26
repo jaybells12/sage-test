@@ -43,7 +43,6 @@ jobs:
           # Deploy Options
           SRC_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
           REMOTE_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
-          SCRIPT: "./post-deploy.sh"
           CACHE_CLEAR: TRUE 
           
 
@@ -70,5 +69,4 @@ jobs:
           # Deploy Options
           SRC_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
           REMOTE_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
-          SCRIPT: "./post-deploy.sh"
           CACHE_CLEAR: TRUE
