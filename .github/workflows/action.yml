@@ -58,7 +58,7 @@ jobs:
         uses: wpengine/github-action-wpe-site-deploy@v3
         with:
           SCRIPT: post-deploy.sh
-          WPE_SSHG_KEY_PRIVATE: ${{ env.WPE_SSHG_KEY_PRIVATE }}
+          WPE_SSHG_KEY_PRIVATE: b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUxOQAAACCqR2EzGJ9XE2CfYNkskluYBvNdyJuJQIQNj5oDndDyRgAAAJiD+568g/uevAAAAAtzc2gtZWQyNTUxOQAAACCqR2EzGJ9XE2CfYNkskluYBvNdyJuJQIQNj5oDndDyRgAAAEA/BtH2knJWG46P1ncphSjr/R/IImzcoKhkBIjbTDhr+apHYTMYn1cTYJ9g2SySW5gG813Im4lAhA2PmgOd0PJGAAAAFWpheWJlQERFU0tUT1AtSFAzT01CNA==
           WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
     # steps:
     # - uses: actions/checkout@v4
