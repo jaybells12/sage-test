@@ -41,10 +41,8 @@ jobs:
           WPE_SSHG_KEY_PRIVATE: ${{ env.WPE_SSHG_KEY_PRIVATE }} 
           WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
           # Deploy Options
-          SRC_PATH: "wp-content/themes/genesis-child-theme/"
-          REMOTE_PATH: "wp-content/themes/genesis-child-theme/"
-          PHP_LINT: TRUE
-          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude-from=.deployignore
+          SRC_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
+          REMOTE_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
           SCRIPT: "post-deploy.sh"
           CACHE_CLEAR: TRUE 
           
@@ -72,7 +70,5 @@ jobs:
           # Deploy Options
           SRC_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
           REMOTE_PATH: "wp-content/themes/${{env.THEME_NAME}}/"
-          PHP_LINT: TRUE
-          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude-from=.deployignore
           SCRIPT: "post-deploy.sh"
           CACHE_CLEAR: TRUE
